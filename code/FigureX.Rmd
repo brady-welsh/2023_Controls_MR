@@ -48,8 +48,7 @@ df %>%
   ggplot(aes(x = year, y = publications, 
              group = were_there_negative_controls, 
              colour = were_there_negative_controls)) +
-  geom_line() +
-  geom_point() +
+  geom_line(size = 2) +
   theme_classic() +
   theme(
     legend.position = c(0.3, 0.8),

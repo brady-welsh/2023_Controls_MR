@@ -41,8 +41,7 @@ df %>%
   ggplot(aes(x = year, y = publications, 
              group = were_there_negative_controls, 
              colour = were_there_negative_controls)) +
-  geom_line() +
-  geom_point() +
+  geom_line(size = 2) +
   theme_classic() +
   theme(
     legend.position = c(0.3, 0.8),
@@ -53,5 +52,11 @@ df %>%
 
     ## `summarise()` has grouped output by 'year'. You can override using the
     ## `.groups` argument.
+
+    ## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+    ## ℹ Please use `linewidth` instead.
+    ## This warning is displayed once every 8 hours.
+    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+    ## generated.
 
 ![](FigureX_files/figure-markdown_github/unnamed-chunk-3-1.png)
