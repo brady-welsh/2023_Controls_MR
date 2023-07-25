@@ -1,30 +1,21 @@
----
-title: "Figure X"
-author: Raphael Eisenhofer
-date: 25/7/2023
-output:
-  md_document:
-    variant: markdown_github
----
-
 ## Code for figure X
 
 ### Raphael Eisenhofer 25/7/2023
 
 ## Load packages and data in, set theme
-```{r message = FALSE}
+
+``` r
 library(tidyverse)
 library(janitor)
 
 df <- read_delim("../data/DataTable.csv", delim = ',') %>%
   clean_names() %>%
   mutate(year = str_extract(study_id, "[:digit:].*"))
-
 ```
 
-
 ## Plot of studies through time
-```{r}
+
+``` r
 #Get counts of publications per year
 df %>%
   filter(year != "2023") %>%
@@ -35,10 +26,12 @@ df %>%
   geom_line() +
   geom_point() +
   theme_minimal()
-
 ```
-## Plot of studies through time (controls vs. none)
-```{r}
+
+![](FigureX_files/figure-markdown_github/unnamed-chunk-2-1.png) \## Plot
+of studies through time (controls vs. none)
+
+``` r
 #Get counts of publications per year
 df %>%
   filter(year != "2023") %>%
@@ -56,5 +49,9 @@ df %>%
     axis.title = element_text(size = 14)
   ) +
   labs(x = "Year", y = "Studies (n)", colour = "Negative controls?")
-
 ```
+
+    ## `summarise()` has grouped output by 'year'. You can override using the
+    ## `.groups` argument.
+
+![](FigureX_files/figure-markdown_github/unnamed-chunk-3-1.png)
