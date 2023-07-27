@@ -32,16 +32,29 @@ df %>%
 of studies through time (controls vs. none)
 
 ``` r
+# Get counts of sequenced negative controls
+seq_neg_controls <- df %>%
+  group_by(year, were_the_negative_controls_sequenced) %>%
+  summarise(count = n()) %>%
+  filter(were_the_negative_controls_sequenced == "Yes")
+```
+
+    ## `summarise()` has grouped output by 'year'. You can override using the
+    ## `.groups` argument.
+
+``` r
 #Get counts of publications per year
 df %>%
   filter(year != "2023") %>%
   group_by(year, were_there_negative_controls) %>%
   summarise(publications = n()) %>%
-#Line plot it
   ggplot(aes(x = year, y = publications, 
              group = were_there_negative_controls, 
              colour = were_there_negative_controls)) +
   geom_line(size = 2) +
+  geom_text(data = seq_neg_controls, 
+            aes(x = year, y = count, label = count), 
+            inherit.aes = FALSE) +
   theme_classic() +
   theme(
     legend.position = c(0.3, 0.8),
