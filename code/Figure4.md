@@ -104,7 +104,7 @@ ggarrange(full.pie, blank, pos.pie, neg.pie, nrow = 2, ncol = 2, common.legend =
           labels = list('A)', 'B)', 'C)', 'D)'), font.label = list(size = 30))
 
 ggsave("Figure4_files/Figure4.svg", height = 18, width = 18)
-ggsave("Figure4_files/Figure4.png", height = 18, width = 18, dpi = 600)
+ggsave("Figure4_files/Figure4.png", height = 18, width = 18, dpi = 600, bg = 'white')
 ```
 
 ![](Figure4_files/Figure4.png)
