@@ -21,7 +21,7 @@ sb.data <- data %>% select(Sample.Blank,
                           Spike.Ins)
 ```
 
-## Plot prevalance of controls
+## Plot prevalance of controls (4A)
 
 ``` r
 # Count prevalence of positive, negative and positive and negative controls and add labels
@@ -49,16 +49,17 @@ full.pie <- ggplot(prev.c.data, aes(x = "", y = n,
   theme(legend.position = "none")
 ```
 
-## Plot sequencing occurances for each observed control
+## Plot sequencing occurances for each observed control (4C and 4D)
 
 ``` r
-# First, positive controls
+# First, positive controls (4C)
 
 seq.pos.data <- data %>% count(Were.the.positive.controls.sequenced.)
 seq.pos.data$sequenced <- c("No", "Yes", "NA")
 seq.pos.data <- subset(seq.pos.data, sequenced!='NA')
 
-# and negative controls
+# and negative controls (4D)
+
 seq.neg.data <- data %>% count(Were.the.negative.controls.sequenced.)
 seq.neg.data$sequenced <- c("No", "Unknown", "Yes", "NA")
 seq.neg.data <- subset(seq.neg.data, sequenced!='NA')
