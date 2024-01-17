@@ -80,10 +80,14 @@ neg_prop %>%
             group = were_there_positive_controls,
             colour = "Positive controls"),
             linewidth = 2) +
+  geom_point(data = neg_prop, aes(x = year, y = proportion * 100,
+            group = were_there_negative_controls,
+            colour = "Negative controls"),
+            size = 3) +
   geom_point(data = pos_prop, aes(x = year, y = proportion * 100,
             group = were_there_positive_controls,
             colour = "Positive controls"),
-            size = 4) +
+            size = 3) +
   geom_line(data = n_studies, 
             aes(x = year, y = publications, group = "NA"), 
             color = "grey",
